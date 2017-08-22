@@ -80,6 +80,8 @@ Namespace LibraryAppium
                     capabilities.SetCapability("deviceName", p_Device)
                     capabilities.SetCapability("autoWebview", "False")
                     capabilities.SetCapability("app", p_pathUrlApp)
+                    capabilities.SetCapability("appActivity", "br.com.taqtile.android.app.presentation.initialcheck.InitialCheckActivity")
+                    capabilities.SetCapability("appWaitActivity", "br.com.taqtile.android.app.presentation.signin.SignInActivity")
 
                     'capabilities.SetCapability("FullReset", False)
                     'capabilities.SetCapability("noReset", True)

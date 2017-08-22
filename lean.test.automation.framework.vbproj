@@ -245,6 +245,7 @@
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Scripts\scriptMaster.vb" />
+    <Compile Include="Scripts\test_Eudora_Acessar_Aplicativo.vb" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
