@@ -259,7 +259,7 @@ Namespace LibraryGlobal
                 Return Nothing
             End Try
         End Function
-        Function StartTests(Optional noReset As String = "", Optional waitActivity As String = "") As Boolean
+        Function StartTests() As Boolean
             LogExecution("StartTests", StateLog.Start)
             Try
                 Select Case p_ToolName
@@ -294,7 +294,7 @@ Namespace LibraryGlobal
                         Return True
                     Case ActiveTool.Appium
                         Dim app = New LibraryAppium.SeleniumAppiumHelper
-                        app.SetupTest(noReset, waitActivity)
+                        app.SetupTest()
                         Return True
                     Case Else
                         LogExecution("SartTests: Case Else", StateLog.Exception)
@@ -1867,19 +1867,19 @@ Namespace LibraryGlobal
                     Dim message As String = Nothing
                     Dim element As String = Nothing
 
-                    'If Not Exist("br.com.vivo:id/title", 500, typeIdentification.id) Then
-                    'If Not Exist("com.android.packageinstaller:id/permission_message", 500, typeIdentification.id) Then
-                    '    Return Nothing
-                    'Else
-                    '    title = GetText("com.android.packageinstaller:id/permission_message", typeIdentification.id)
-                    '    message = GetText("com.android.packageinstaller:id/permission_message", typeIdentification.id)
-                    '    element = "com.android.packageinstaller:id/permission_allow_button"
-                    'End If
-                    'Else
-                    'title = GetText("br.com.vivo:id/title", typeIdentification.id)
-                    'message = GetText("br.com.vivo:id/message", typeIdentification.id)
-                    'element = "br.com.vivo:id/positive_button"
-                    'End If
+                    If Not Exist("br.com.vivo:id/title", 500, typeIdentification.id) Then
+                        'If Not Exist("com.android.packageinstaller:id/permission_message", 500, typeIdentification.id) Then
+                        '    Return Nothing
+                        'Else
+                        '    title = GetText("com.android.packageinstaller:id/permission_message", typeIdentification.id)
+                        '    message = GetText("com.android.packageinstaller:id/permission_message", typeIdentification.id)
+                        '    element = "com.android.packageinstaller:id/permission_allow_button"
+                        'End If
+                    Else
+                        'title = GetText("br.com.vivo:id/title", typeIdentification.id)
+                        'message = GetText("br.com.vivo:id/message", typeIdentification.id)
+                        'element = "br.com.vivo:id/positive_button"
+                    End If
 
                     If String.IsNullOrEmpty(message) Then Return Nothing
 

@@ -50,7 +50,7 @@ Namespace LibraryAppium
             Android
         End Enum
         <TestInitialize()>
-        Public Sub SetupTest(Optional noReset As String = "", Optional waitActivity As String = "")
+        Public Sub SetupTest()
             Select Case p_PlatformName
                 Case "IOS"
                     Try
@@ -81,12 +81,7 @@ Namespace LibraryAppium
                     capabilities.SetCapability("autoWebview", "False")
                     capabilities.SetCapability("app", p_pathUrlApp)
                     capabilities.SetCapability("appActivity", "br.com.taqtile.android.app.presentation.initialcheck.InitialCheckActivity")
-                    If noReset <> "" Then
-                        capabilities.SetCapability("appWaitActivity", waitActivity)
-                        capabilities.SetCapability("noReset", noReset)
-                    Else
-                        capabilities.SetCapability("appWaitActivity", "br.com.taqtile.android.app.presentation.signin.SignInActivity")
-                    End If
+                    capabilities.SetCapability("appWaitActivity", "br.com.taqtile.android.app.presentation.signin.SignInActivity")
 
                     'capabilities.SetCapability("FullReset", False)
                     'capabilities.SetCapability("noReset", True)
