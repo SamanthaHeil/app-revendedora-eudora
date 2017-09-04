@@ -248,8 +248,12 @@
     <Compile Include="Scripts\test_EudoraApp_AbrirApp.vb" />
     <Compile Include="Scripts\test_EudoraApp_Busca.vb" />
     <Compile Include="Scripts\test_EudoraApp_Busca_Autocomplete.vb" />
+    <Compile Include="Scripts\test_EudoraApp_Busca_Autocomplete_Adicionar_Produto.vb" />
+    <Compile Include="Scripts\test_EudoraApp_Busca_Historico.vb" />
     <Compile Include="Scripts\test_EudoraApp_Busca_Inexistente.vb" />
+    <Compile Include="Scripts\test_EudoraApp_Busca_Item_Autocomplete.vb" />
     <Compile Include="Scripts\test_EudoraApp_Login.vb" />
+    <Compile Include="Scripts\test_EudoraApp_Validar_Categorias.vb" />
     <Compile Include="Scripts\test_Eudora_Acessar_Aplicativo.vb" />
   </ItemGroup>
   <ItemGroup>

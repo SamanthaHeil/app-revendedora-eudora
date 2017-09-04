@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Librarys/GlobalLibrary/__Library.Selenium.WD.vb
+/Librarys/GlobalLibrary/__Library.Selenium.Appium.vb
+/Librarys/GlobalLibrary/__Library.Global.vb

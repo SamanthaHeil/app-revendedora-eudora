@@ -1134,7 +1134,7 @@ Namespace LibraryGlobal
             End If
             Try
                 If typeIdentification = LibGlobal.typeIdentification.leanTest Then
-                    msg = GetValue(ImgPathOrCoordinatesXY)
+                    msg = GetText(ImgPathOrCoordinatesXY)
                     If Not String.IsNullOrEmpty(msg) Then Call SetValueOutput(field, msg)
                 Else
                     Select Case p_ToolName
@@ -2423,5 +2423,36 @@ Namespace LibraryGlobal
                 Return False
             End Try
         End Function
+
+        Sub Flick(x As Integer, y As Integer)
+            Try
+                libraryAppiumInteration.Flick(x, y)
+            Catch ex As Exception
+            End Try
+        End Sub
+        Sub Down(x As Integer, y As Integer)
+            Try
+                libraryAppiumInteration.Down(x, y)
+            Catch ex As Exception
+            End Try
+        End Sub
+        Sub Up(x As Integer, y As Integer)
+            Try
+                libraryAppiumInteration.Up(x, y)
+            Catch ex As Exception
+            End Try
+        End Sub
+        Sub Move(x As Integer, y As Integer)
+            Try
+                libraryAppiumInteration.Move(x, y)
+            Catch ex As Exception
+            End Try
+        End Sub
+        Sub DragAndDrop(x1 As Integer, y1 As Integer, x2 As Integer, y2 As Integer)
+            Try
+                libraryAppiumInteration.DragAndDrop(x1, y1, x2, y2)
+            Catch ex As Exception
+            End Try
+        End Sub
     End Class
 End Namespace

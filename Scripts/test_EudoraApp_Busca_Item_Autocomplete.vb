@@ -1,17 +1,17 @@
 '*********************************************************************************************************************************
-'Create by LeanTest Automation 3.2 in 23/08/2017 13:55:49 (By LeanTest Automation Test 2.0) 
+'Create by LeanTest Automation 3.2 in 23/08/2017 16:16:14 (By LeanTest Automation Test 2.0) 
 'User:............ Admin
 'Domain:.......... LeanTest Execution Automation
 'Environment:..... Automation Project
 'Application...... EudoraApp
-'Functionality:... Busca Inexistente
+'Functionality:... Busca - Item Autocomplete
 'Master Test:..... No Defined
-'TableTest:....... test_EudoraApp_Busca_Inexistente
+'TableTest:....... test_EudoraApp_Busca_Item_Autocomplete
 '*********************************************************************************************************************************
 Imports Lean.Test.Automation.Framework.LibraryGlobal.LibGlobal
 
-Namespace test_EudoraApp_Busca_Inexistente
-    Public Class test_EudoraApp_Busca_Inexistente
+Namespace test_EudoraApp_Busca_Item_Autocomplete
+    Public Class test_EudoraApp_Busca_Item_Autocomplete
         Public Sub New()
         End Sub
         Public Function Run() As Boolean
@@ -19,25 +19,14 @@ Namespace test_EudoraApp_Busca_Inexistente
                 If StartTest() Then
                     Do While p_CountTest <> 0
                         Try
-                            Test.TestLog("Evidência antes do click em Busca", "", "", typelog.NA)
+                            Test.TestLog("Evidência antes do click em um item", "", "", typelog.NA)
 
-                            If CBool(vbtnClickBusca) Then
-                                Test.Click("br.com.grupoboticario.eudorarepresentante.staging:id/fragment_home_search_bar_container", vbtnClickBusca, typeIdentification.id) 'click ClickBusca
-                                Test.TestLog("Clicar em Busca", "Clicar em Busca e verificar o resultado esperado", "Clique em Busca com sucesso", typelog.Passed)
+                            If CBool(vbtnOpcao) Then
+                                Test.Click("br.com.grupoboticario.eudorarepresentante.staging:id/view_holder_autocomplete_product_container", vbtnOpcao, typeIdentification.id) 'click Opcao
+                                Test.TestLog("Clicar em uma opção do autocomplete", "Clicar em uma das opções e verificar o resultado esperado", "Clique na opção realizado com sucesso", typelog.Passed)
                             End If
 
-                            Test.SendKey(vBusca + "\n") 'SendKey batom
-                            Test.WaitExist("br.com.grupoboticario.eudorarepresentante.staging:id/view_base_placeholder_title", typeIdentification.id)
-                            Test.TestLog("Evidência após busca", "", "", typelog.NA)
 
-                            Dim text As String
-                            text = Test.GetText("br.com.grupoboticario.eudorarepresentante.staging:id/view_base_placeholder_title", typeIdentification.id)
-
-                            If text.Equals("Nenhum resultado encontrado") Then
-                                Test.TestLog("Verificar resultado da busca", "Verificar resultado após realizar a busca", "Verificação realizada com sucesso", typelog.Passed)
-                            Else
-                                Test.TestLog("Verificar resultado da busca", "Verificar resultado após realizar a busca", "Busca com erro", typelog.Failed)
-                            End If
 
                             'Checkpoint
                             Test.CheckPointTest(p_CheckPoint1, p_ExpectedResult)
@@ -61,7 +50,7 @@ Namespace test_EudoraApp_Busca_Inexistente
                 End If
             Catch ex As Exception
                 p_errorDescription = "Menssage error: " & ex.Message.ToString
-				HandlerError("test_EudoraApp_Busca_Inexistente.test_EudoraApp_Busca_Inexistente.Run: " & ex.Message)
+				HandlerError("test_EudoraApp_Busca_Item_Autocomplete.test_EudoraApp_Busca_Item_Autocomplete.Run: " & ex.Message)
                 Test.TestLog("Execução do teste", "Teste executado com sucesso", "Teste executado com falha! Message: " & p_errorDescription, typelog.Failed)
                 Return False
             End Try
@@ -70,7 +59,7 @@ Namespace test_EudoraApp_Busca_Inexistente
         '*********************************************************************************************************************************
         'STARTTEST
         Public Shared p_ExpectedResult, p_CheckPoint1 As String
-        Public Shared vbtnClickBusca, vBusca As String
+        Public Shared vbtnOpcao As String
 
         Private Function StartTest() As Boolean
             Dim strQueryOut1, strQueryOut2, strQueryOut3, strQueryOut4, strQueryOut5, strQueryOut6
@@ -105,10 +94,9 @@ Namespace test_EudoraApp_Busca_Inexistente
 					If strQueryOut6 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut6, p_TableTest, p_IDScenario, p_IDTest)
 
                     p_CountTest = pc_db.OpenTestTable(p_TableTest, p_IDScenario)
-                    vbtnClickBusca = pc_db.Fieldt("vbtnClickBusca")
-                    vBusca = pc_db.Fieldt("vBusca")
-
-
+                    vbtnOpcao = pc_db.Fieldt("vbtnOpcao")
+					
+                    
                     pc_db.StartExecution(p_TableTest, p_IDTest)
                     If p_PublishQC Then CreateStructureQC()
                     Return True
@@ -116,7 +104,7 @@ Namespace test_EudoraApp_Busca_Inexistente
                     Return False
                 End If
             Catch ex As Exception
-                HandlerError("test_EudoraApp_Busca_Inexistente.test_EudoraApp_Busca_Inexistente.StartTest" & ex.StackTrace & " - " & ex.Message)
+                HandlerError("test_EudoraApp_Busca_Item_Autocomplete.test_EudoraApp_Busca_Item_Autocomplete.StartTest" & ex.StackTrace & " - " & ex.Message)
                 Return False
             End Try
         End Function

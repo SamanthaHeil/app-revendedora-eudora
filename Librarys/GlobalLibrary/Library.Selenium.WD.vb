@@ -4,7 +4,7 @@ Imports System.Text.RegularExpressions
 Imports System.Threading
 Imports NUnit.Framework
 Imports Selenium
-Imports Lean.Test.Automation.Framework.LibraryGlobal.LibGlobal
+Imports Lean.Test.Automation.Framework.LibraryGlobal.libGlobal
 Imports Lean.Test.Automation.API
 Imports OpenQA.Selenium
 Imports OpenQA.Selenium.Remote
@@ -345,7 +345,7 @@ Namespace LibrarySeleniumWD
                             End Select
                             MouseOverElement(webElement)
                             webElement.Click()
-                            MouseOverElement(webElement)
+                            
                             Return True
                         Catch ex As Exception
                             p_errorDescription = "Menssage error: " & ex.Message.ToString

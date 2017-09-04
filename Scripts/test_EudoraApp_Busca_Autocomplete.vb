@@ -19,21 +19,23 @@ Namespace test_EudoraApp_Busca_Autocomplete
                 If StartTest() Then
                     Do While p_CountTest <> 0
                         Try
+                            Test.TestLog("Evidência antes do click em Busca", "", "", typelog.NA)
+
                             If CBool(vbtnBuscaClick) Then
                                 Test.Click("br.com.grupoboticario.eudorarepresentante.staging:id/fragment_home_search_bar_container", vbtnBuscaClick, typeIdentification.id) 'click ClickBusca
-                                Test.TestLog("Verificar resultado após clique em ClickBusca", "Verificar resultado após clique em ClickBusca", "Verificação realizada com sucesso", typelog.Passed)
+                                Test.TestLog("Clicar em Busca", "Clicar em Busca e verificar o resultado esperado", "Clique em Busca com sucesso", typelog.Passed)
                             End If
-                            Test.SendKey(vBusca) 'SendKey batom
 
+                            Test.SendKey(vBusca) 'SendKey batom
                             Test.WaitExist("br.com.grupoboticario.eudorarepresentante.staging:id/view_holder_autocomplete_product_container", typeIdentification.id)
                             Test.TestLog("Evidência após autocomplete", "", "", typelog.NA)
 
                             Dim text As String
                             text = Test.GetText("br.com.grupoboticario.eudorarepresentante.staging:id/view_holder_autocomplete_product_name", typeIdentification.id)
                             If text.ToUpper.Contains(vBusca.ToUpper) Then
-                                Test.TestLog("Verificar resultado do autocomplete", "Verificar resultado do autocomplete", "Verificação realizada com sucesso", typelog.Passed)
+                                Test.TestLog("Digitar texto na caixa de busca", "Digitar texto na caixa de busca e verificar o resultado do autocomplete", "Autocomplete realizado com sucesso", typelog.Passed)
                             Else
-                                Test.TestLog("Verificar resultado do autocomplete", "Verificar resultado do autocomplete", "Autocomplete com falha", typelog.Failed)
+                                Test.TestLog("Digitar texto na caixa de busca", "Digitar texto na caixa de busca e verificar o resultado do autocomplete", "Autocomplete com falha", typelog.Failed)
                             End If
 
                             'Checkpoint
@@ -42,7 +44,7 @@ Namespace test_EudoraApp_Busca_Autocomplete
                             Test.EndTest(p_GenerateLogTest)
                             If p_IsLoop Then StartTest() Else p_CountTest = 0
                         Catch ex As Exception
-							p_errorDescription = "Menssage error: " & ex.Message.ToString
+                            p_errorDescription = "Menssage error: " & ex.Message.ToString
 							Test.TestLog("Passo executado", "Execução do passo com sucesso", "Passo executado com falha! Message: " & p_errorDescription, typelog.Failed)
 							EndTestTable()
                        Test.EndTest(p_GenerateLogTest)

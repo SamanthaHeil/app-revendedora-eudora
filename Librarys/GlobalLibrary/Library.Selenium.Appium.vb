@@ -322,6 +322,44 @@ Namespace LibraryAppium
             End Try
         End Function
 
+        Sub Flick(x As Integer, y As Integer)
+            Try
+                Dim tou = New RemoteTouchScreen(objAppium)
+                tou.Flick(x, y)
+            Catch ex As Exception
+            End Try
+        End Sub
+        Sub Down(x As Integer, y As Integer)
+            Try
+                Dim tou = New RemoteTouchScreen(objAppium)
+                tou.Down(x, y)
+            Catch ex As Exception
+            End Try
+        End Sub
+        Sub Up(x As Integer, y As Integer)
+            Try
+                Dim tou = New RemoteTouchScreen(objAppium)
+                tou.Up(x, y)
+            Catch ex As Exception
+            End Try
+        End Sub
+        Sub Move(x As Integer, y As Integer)
+            Try
+                Dim tou = New RemoteTouchScreen(objAppium)
+                tou.Move(x, y)
+            Catch ex As Exception
+            End Try
+        End Sub
+        Sub DragAndDrop(x1 As Integer, y1 As Integer, x2 As Integer, y2 As Integer)
+            Try
+                Dim tou = New RemoteTouchScreen(objAppium)
+                tou.Down(x1, y1)
+                tou.Move(x2, y2)
+                tou.Up(x2, y2)
+            Catch ex As Exception
+            End Try
+        End Sub
+
         Function Click(element As String, Optional typeIdentification As typeIdentification = typeIdentification.xpath, Optional waitElement As Boolean = True) As Boolean
             Dim webElement As IWebElement = Nothing
             Try
@@ -603,6 +641,10 @@ Namespace LibraryAppium
         Sub Reflesh()
             Try
                 objSeleniumWD.Navigate.Refresh()
+
+                'Dim objApp As New OpenQA.Selenium.Appium.MultiTouch.MultiAction
+                'Dim touch As New TouchAction(objAppium)
+
             Catch ex As Exception
 
             End Try

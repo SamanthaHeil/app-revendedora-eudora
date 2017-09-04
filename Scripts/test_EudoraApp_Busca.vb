@@ -19,12 +19,14 @@ Namespace test_EudoraApp_Busca
                 If StartTest() Then
                     Do While p_CountTest <> 0
                         Try
+                            Test.TestLog("Evidência antes do click em Busca", "", "", typelog.NA)
+
                             If CBool(vbtnClickBusca) Then
                                 Test.Click("br.com.grupoboticario.eudorarepresentante.staging:id/fragment_home_search_bar_container", vbtnClickBusca, typeIdentification.id) 'click ClickBusca
-                                Test.TestLog("Verificar resultado após clique em ClickBusca", "Verificar resultado após clique em ClickBusca", "Verificação realizada com sucesso", typelog.Passed)
+                                Test.TestLog("Clicar em Busca", "Clicar em Busca e verificar o resultado esperado", "Clique em Busca com sucesso", typelog.Passed)
                             End If
-                            Test.SendKey(vBusca + "\n") 'SendKey batom
 
+                            Test.SendKey(vBusca + "\n") 'SendKey batom
                             Test.WaitExist("br.com.grupoboticario.eudorarepresentante.staging:id/fragment_search_product_list", typeIdentification.id)
                             Test.TestLog("Evidência após busca", "", "", typelog.NA)
 
@@ -34,9 +36,9 @@ Namespace test_EudoraApp_Busca
                             name = Test.GetText("//android.widget.FrameLayout[@resource-id='br.com.grupoboticario.eudorarepresentante.staging:id/fragment_search_product_list']//android.widget.TextView[@resource-id='br.com.grupoboticario.eudorarepresentante.staging:id/component_product_info_name']")
                             code = Test.GetText("//android.widget.FrameLayout[@resource-id='br.com.grupoboticario.eudorarepresentante.staging:id/fragment_search_product_list']//android.widget.TextView[@resource-id='br.com.grupoboticario.eudorarepresentante.staging:id/component_product_info_code']")
                             If name.ToUpper.Contains(vBusca.ToUpper) Or code.Contains(vBusca) Then
-                                Test.TestLog("Verificar resultado da busca", "Verificar resultado após realizar a busca", "Verificação realizada com sucesso", typelog.Passed)
+                                Test.TestLog("Digitar texto de busca", "Digitar texto e verificar o resultado da busca", "Busca realizada com sucesso", typelog.Passed)
                             Else
-                                Test.TestLog("Verificar resultado da busca", "Verificar resultado após realizar a busca", "Verificação falhou", typelog.Failed)
+                                Test.TestLog("Digitar texto de busca", "Digitar texto e verificar o resultado da busca", "Busca com falha", typelog.Failed)
                             End If
 
                             'Checkpoint
