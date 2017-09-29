@@ -147,15 +147,15 @@ Namespace test_EudoraApp_Validar_Categorias
                     p_IDRun = pc_db.Fieldt("IDRun")
                     p_ExpectedResult = pc_db.Fieldt("ExpectedResult")
                     p_IDTestInstance = pc_db.Fieldt("IDTool")
-					p_CheckPoint1 = pc_db.Fieldt("CheckPoint1")
+                    p_CheckPoint1 = pc_db.Fieldt("CheckPoint1")
 
                     'parameters output
                     strQueryOut1 = pc_db.Fieldt("QueryInput1")
                     strQueryOut2 = pc_db.Fieldt("QueryInput2")
                     strQueryOut3 = pc_db.Fieldt("QueryInput3")
                     strQueryOut4 = pc_db.Fieldt("QueryInput4")
-					strQueryOut5 = pc_db.Fieldt("QueryInput5")
-					strQueryOut6 = pc_db.Fieldt("QueryInput6")
+                    strQueryOut5 = pc_db.Fieldt("QueryInput5")
+                    strQueryOut6 = pc_db.Fieldt("QueryInput6")
                     'parameters input
 
                     'transfer values between tables
@@ -163,8 +163,8 @@ Namespace test_EudoraApp_Validar_Categorias
                     If strQueryOut2 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut2, p_TableTest, p_IDScenario, p_IDTest)
                     If strQueryOut3 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut3, p_TableTest, p_IDScenario, p_IDTest)
                     If strQueryOut4 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut4, p_TableTest, p_IDScenario, p_IDTest)
-					If strQueryOut5 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut5, p_TableTest, p_IDScenario, p_IDTest)
-					If strQueryOut6 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut6, p_TableTest, p_IDScenario, p_IDTest)
+                    If strQueryOut5 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut5, p_TableTest, p_IDScenario, p_IDTest)
+                    If strQueryOut6 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut6, p_TableTest, p_IDScenario, p_IDTest)
 
                     p_CountTest = pc_db.OpenTestTable(p_TableTest, p_IDScenario)
                     vCategorias = pc_db.Fieldt("vCategorias")

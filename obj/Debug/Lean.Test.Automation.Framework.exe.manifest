@@ -173,14 +173,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Lean.Test.Automation.Framework.exe" size="134144">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Lean.Test.Automation.Framework.exe" size="153600">
       <assemblyIdentity name="Lean.Test.Automation.Framework" version="3.2.1.1" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>2GTIWE4Vm4RW3JfHHqgKJ9hYS+c=</dsig:DigestValue>
+        <dsig:DigestValue>R53tvISBmQ5GL7VxVymlcOqFauI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -378,7 +378,7 @@ Namespace LibraryAppium
                                 Case typeIdentification.linkText
                                     webElement = objAppium.FindElement(By.LinkText(element))
                             End Select
-
+             
                             'webElement.Location
                             Dim xx = webElement.Location
                             pc_dv.MouseMove(xx.X + 20, xx.Y + 74)

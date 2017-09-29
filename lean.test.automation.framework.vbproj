@@ -246,20 +246,36 @@
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Scripts\scriptMaster.vb" />
     <Compile Include="Scripts\test_EudoraApp_AbrirApp.vb" />
+    <Compile Include="Scripts\test_EudoraApp_Abrir_Filtros.vb" />
+    <Compile Include="Scripts\test_EudoraApp_Acessar_Pedido.vb" />
     <Compile Include="Scripts\test_EudoraApp_Busca.vb" />
     <Compile Include="Scripts\test_EudoraApp_Busca_Autocomplete.vb" />
     <Compile Include="Scripts\test_EudoraApp_Busca_Autocomplete_Adicionar_Produto.vb" />
     <Compile Include="Scripts\test_EudoraApp_Busca_Historico.vb" />
     <Compile Include="Scripts\test_EudoraApp_Busca_Inexistente.vb" />
     <Compile Include="Scripts\test_EudoraApp_Busca_Item_Autocomplete.vb" />
+    <Compile Include="Scripts\test_EudoraApp_Fechar_Filtros.vb" />
     <Compile Include="Scripts\test_EudoraApp_Login.vb" />
+    <Compile Include="Scripts\test_EudoraApp_Selecionar_Categoria.vb" />
+    <Compile Include="Scripts\test_EudoraApp_Selecionar_SubCategoria.vb" />
     <Compile Include="Scripts\test_EudoraApp_Validar_Categorias.vb" />
+    <Compile Include="Scripts\test_EudoraApp_Validar_Produtos_Pedido.vb" />
+    <Compile Include="Scripts\test_EudoraApp_Validar_SubCategorias.vb" />
     <Compile Include="Scripts\test_Eudora_Acessar_Aplicativo.vb" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PackagesExecution\Package_EudoraApp\DataTest.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PackagesExecution\Package_EudoraApp_Busca\DataTest.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PackagesExecution\Package_EudoraApp_Categoria\DataTest.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
     <Content Include="packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
     <Content Include="packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\Microsoft.Threading.Tasks.dll" />

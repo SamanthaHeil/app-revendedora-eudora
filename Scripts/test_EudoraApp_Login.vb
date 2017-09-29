@@ -8,6 +8,8 @@
 'Master Test:..... No Defined
 'TableTest:....... test_EudoraApp_Login
 '*********************************************************************************************************************************
+Imports System.Text
+Imports System.Text.RegularExpressions
 Imports Lean.Test.Automation.Framework.LibraryGlobal.LibGlobal
 
 
@@ -22,10 +24,10 @@ Namespace test_EudoraApp_Login
                         Try
                             Test.TestLog("Evidência antes do login", "", "", typelog.NA)
 
-                            Test.Click("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText", "True")
+                            Test.Click("//android.widget.LinearLayout[@resource-id='br.com.grupoboticario.eudorarepresentante.staging:id/fragment_sign_in_email_cpf_edit_text']//android.widget.FrameLayout", "True")
                             Test.SendKey(vEmailCPF) 'SendKey vEmailCPF
 
-                            Test.Click("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.ScrollView/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText", "True")
+                            Test.Click("//android.widget.LinearLayout[@resource-id='br.com.grupoboticario.eudorarepresentante.staging:id/fragment_sign_in_password_edit_text']//android.widget.FrameLayout", "True")
                             Test.SendKey(vSenha + "\n") 'SendKey vSenha
 
                             'Test.Click("br.com.grupoboticario.eudorarepresentante.staging:id/component_progress_bar_button_text", "True", typeIdentification.id)
@@ -40,9 +42,9 @@ Namespace test_EudoraApp_Login
                             If p_IsLoop Then StartTest() Else p_CountTest = 0
                         Catch ex As Exception
                             p_errorDescription = "Menssage error: " & ex.Message.ToString
-							Test.TestLog("Passo executado", "Execução do passo com sucesso", "Passo executado com falha! Message: " & p_errorDescription, typelog.Failed)
-							EndTestTable()
-                       Test.EndTest(p_GenerateLogTest)
+                            Test.TestLog("Passo executado", "Execução do passo com sucesso", "Passo executado com falha! Message: " & p_errorDescription, typelog.Failed)
+                            EndTestTable()
+                            Test.EndTest(p_GenerateLogTest)
                             If p_IsLoop Then StartTest() Else p_CountTest = 0
                         End Try
                     Loop
@@ -55,8 +57,36 @@ Namespace test_EudoraApp_Login
                 End If
             Catch ex As Exception
                 p_errorDescription = "Menssage error: " & ex.Message.ToString
-				HandlerError("test_EudoraApp_Login.test_EudoraApp_Login.Run: " & ex.Message)
+                HandlerError("test_EudoraApp_Login.test_EudoraApp_Login.Run: " & ex.Message)
                 Test.TestLog("Execução do teste", "Teste executado com sucesso", "Teste executado com falha! Message: " & p_errorDescription, typelog.Failed)
+                Return False
+            End Try
+        End Function
+
+        Private Function Back() As Boolean
+            Try
+                Dim WR As System.Net.HttpWebRequest
+
+                Dim URI As New Uri("http://127.0.0.1:4723/wd/hub/sessions")
+                WR = DirectCast(System.Net.HttpWebRequest.Create(URI), System.Net.HttpWebRequest)
+                If (WR.GetResponse().ContentLength = 0) Then
+                    Return False
+                End If
+                Dim RS = New System.IO.StreamReader(WR.GetResponse().GetResponseStream())
+                Dim response = RS.ReadToEnd()
+                Dim RX = New Regex("""id"":""(.+?)""")
+                Dim sessionId = RX.Match(response).Groups(1).Value
+
+                URI = New Uri("http://127.0.0.1:4723/wd/hub/session/" + sessionId + "/back")
+                WR = DirectCast(System.Net.HttpWebRequest.Create(URI), System.Net.HttpWebRequest)
+                WR.Method = "POST"
+                WR.ContentType = "application/json"
+                Dim content = "{}"
+                WR.ContentLength = content.Length
+                WR.GetRequestStream().Write(Encoding.UTF8.GetBytes(content), 0, content.Length)
+                Return True
+            Catch ex As System.Net.WebException
+                'Error in accessing the resource, handle it
                 Return False
             End Try
         End Function
@@ -79,15 +109,15 @@ Namespace test_EudoraApp_Login
                     p_IDRun = pc_db.Fieldt("IDRun")
                     p_ExpectedResult = pc_db.Fieldt("ExpectedResult")
                     p_IDTestInstance = pc_db.Fieldt("IDTool")
-					p_CheckPoint1 = pc_db.Fieldt("CheckPoint1")
+                    p_CheckPoint1 = pc_db.Fieldt("CheckPoint1")
 
                     'parameters output
                     strQueryOut1 = pc_db.Fieldt("QueryInput1")
                     strQueryOut2 = pc_db.Fieldt("QueryInput2")
                     strQueryOut3 = pc_db.Fieldt("QueryInput3")
                     strQueryOut4 = pc_db.Fieldt("QueryInput4")
-					strQueryOut5 = pc_db.Fieldt("QueryInput5")
-					strQueryOut6 = pc_db.Fieldt("QueryInput6")
+                    strQueryOut5 = pc_db.Fieldt("QueryInput5")
+                    strQueryOut6 = pc_db.Fieldt("QueryInput6")
                     'parameters input
 
                     'transfer values between tables
@@ -95,8 +125,8 @@ Namespace test_EudoraApp_Login
                     If strQueryOut2 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut2, p_TableTest, p_IDScenario, p_IDTest)
                     If strQueryOut3 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut3, p_TableTest, p_IDScenario, p_IDTest)
                     If strQueryOut4 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut4, p_TableTest, p_IDScenario, p_IDTest)
-					If strQueryOut5 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut5, p_TableTest, p_IDScenario, p_IDTest)
-					If strQueryOut6 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut6, p_TableTest, p_IDScenario, p_IDTest)
+                    If strQueryOut5 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut5, p_TableTest, p_IDScenario, p_IDTest)
+                    If strQueryOut6 <> Nothing Then pc_db.TransferDataInTablesArray(strQueryOut6, p_TableTest, p_IDScenario, p_IDTest)
 
                     p_CountTest = pc_db.OpenTestTable(p_TableTest, p_IDScenario)
                     vEmailCPF = pc_db.Fieldt("vEmailCPF")
